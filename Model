@@ -1,0 +1,1078 @@
+
+import xlsxwriter
+import random
+from openpyxl import load_workbook
+
+outputWorkbook=xlsxwriter.Workbook(r'C:\Users\barnj\Python\Baseball Project\Test.xlsx')
+outputSheet=outputWorkbook.add_worksheet()
+for i in range(1,31):
+    outputSheet.write('A'+str(2+(i-1)*10),'AVG')
+    outputSheet.write('A'+str(3+(i-1)*10),'HR')
+    outputSheet.write('A'+str(4+(i-1)*10),'RBI')
+    outputSheet.write('A'+str(5+(i-1)*10),'OBP')
+    outputSheet.write('A'+str(6+(i-1)*10),'2B')
+    outputSheet.write('A'+str(7+(i-1)*10),'3B')
+    outputSheet.write('A'+str(8+(i-1)*10),'BB')
+    outputSheet.write('A'+str(9+(i-1)*10),'PA')
+
+book=load_workbook(filename=r'C:\Users\barnj\Python\Baseball Project\Stats Template Use.xlsx',data_only=True)
+ws=book['Import']
+ws2=book['Schedule']
+
+b1=b2=b3=runs=runsA=runsH=hits=hitsA=hitsH=outs=rbiAtBat=teamID=startRetrieval=endRetrieval=0
+inn=1
+batterA=batterA1=batterA2=batterA3=batterA4=batterA5=batterA6=batterA7=batterA8=batterA9=batterH=batterH1=batterH2=batterH3=batterH4=batterH5=batterH6=batterH7=batterH8=batterH9=0
+batterStats=['HR','3B','2B','1B','BB']
+stats=['HR','H','AB','BB','2B','3B','RBI']
+statsA1=statsA2=statsA3=statsA4=statsA5=statsA6=statsA7=statsA8=statsA9=statsH1=statsH2=statsH3=statsH4=statsH5=statsH6=statsH7=statsH8=statsH9=[0,]*7
+stats1b1=[0,]*7
+stats2b1=[0,]*7
+stats3b1=[0,]*7
+stats4b1=[0,]*7
+stats5b1=[0,]*7
+stats6b1=[0,]*7
+stats7b1=[0,]*7
+stats8b1=[0,]*7
+stats9b1=[0,]*7
+stats10b1=[0,]*7
+stats11b1=[0,]*7
+stats12b1=[0,]*7
+stats13b1=[0,]*7
+stats14b1=[0,]*7
+stats15b1=[0,]*7
+stats16b1=[0,]*7
+stats17b1=[0,]*7
+stats18b1=[0,]*7
+stats19b1=[0,]*7
+stats20b1=[0,]*7
+stats21b1=[0,]*7
+stats22b1=[0,]*7
+stats23b1=[0,]*7
+stats24b1=[0,]*7
+stats25b1=[0,]*7
+stats26b1=[0,]*7
+stats27b1=[0,]*7
+stats28b1=[0,]*7
+stats29b1=[0,]*7
+stats30b1=[0,]*7
+stats1b2=[0,]*7
+stats2b2=[0,]*7
+stats3b2=[0,]*7
+stats4b2=[0,]*7
+stats5b2=[0,]*7
+stats6b2=[0,]*7
+stats7b2=[0,]*7
+stats8b2=[0,]*7
+stats9b2=[0,]*7
+stats10b2=[0,]*7
+stats11b2=[0,]*7
+stats12b2=[0,]*7
+stats13b2=[0,]*7
+stats14b2=[0,]*7
+stats15b2=[0,]*7
+stats16b2=[0,]*7
+stats17b2=[0,]*7
+stats18b2=[0,]*7
+stats19b2=[0,]*7
+stats20b2=[0,]*7
+stats21b2=[0,]*7
+stats22b2=[0,]*7
+stats23b2=[0,]*7
+stats24b2=[0,]*7
+stats25b2=[0,]*7
+stats26b2=[0,]*7
+stats27b2=[0,]*7
+stats28b2=[0,]*7
+stats29b2=[0,]*7
+stats30b2=[0,]*7
+stats1b3=[0,]*7
+stats2b3=[0,]*7
+stats3b3=[0,]*7
+stats4b3=[0,]*7
+stats5b3=[0,]*7
+stats6b3=[0,]*7
+stats7b3=[0,]*7
+stats8b3=[0,]*7
+stats9b3=[0,]*7
+stats10b3=[0,]*7
+stats11b3=[0,]*7
+stats12b3=[0,]*7
+stats13b3=[0,]*7
+stats14b3=[0,]*7
+stats15b3=[0,]*7
+stats16b3=[0,]*7
+stats17b3=[0,]*7
+stats18b3=[0,]*7
+stats19b3=[0,]*7
+stats20b3=[0,]*7
+stats21b3=[0,]*7
+stats22b3=[0,]*7
+stats23b3=[0,]*7
+stats24b3=[0,]*7
+stats25b3=[0,]*7
+stats26b3=[0,]*7
+stats27b3=[0,]*7
+stats28b3=[0,]*7
+stats29b3=[0,]*7
+stats30b3=[0,]*7
+stats1b4=[0,]*7
+stats2b4=[0,]*7
+stats3b4=[0,]*7
+stats4b4=[0,]*7
+stats5b4=[0,]*7
+stats6b4=[0,]*7
+stats7b4=[0,]*7
+stats8b4=[0,]*7
+stats9b4=[0,]*7
+stats10b4=[0,]*7
+stats11b4=[0,]*7
+stats12b4=[0,]*7
+stats13b4=[0,]*7
+stats14b4=[0,]*7
+stats15b4=[0,]*7
+stats16b4=[0,]*7
+stats17b4=[0,]*7
+stats18b4=[0,]*7
+stats19b4=[0,]*7
+stats20b4=[0,]*7
+stats21b4=[0,]*7
+stats22b4=[0,]*7
+stats23b4=[0,]*7
+stats24b4=[0,]*7
+stats25b4=[0,]*7
+stats26b4=[0,]*7
+stats27b4=[0,]*7
+stats28b4=[0,]*7
+stats29b4=[0,]*7
+stats30b4=[0,]*7
+stats1b5=[0,]*7
+stats2b5=[0,]*7
+stats3b5=[0,]*7
+stats4b5=[0,]*7
+stats5b5=[0,]*7
+stats6b5=[0,]*7
+stats7b5=[0,]*7
+stats8b5=[0,]*7
+stats9b5=[0,]*7
+stats10b5=[0,]*7
+stats11b5=[0,]*7
+stats12b5=[0,]*7
+stats13b5=[0,]*7
+stats14b5=[0,]*7
+stats15b5=[0,]*7
+stats16b5=[0,]*7
+stats17b5=[0,]*7
+stats18b5=[0,]*7
+stats19b5=[0,]*7
+stats20b5=[0,]*7
+stats21b5=[0,]*7
+stats22b5=[0,]*7
+stats23b5=[0,]*7
+stats24b5=[0,]*7
+stats25b5=[0,]*7
+stats26b5=[0,]*7
+stats27b5=[0,]*7
+stats28b5=[0,]*7
+stats29b5=[0,]*7
+stats30b5=[0,]*7
+stats1b6=[0,]*7
+stats2b6=[0,]*7
+stats3b6=[0,]*7
+stats4b6=[0,]*7
+stats5b6=[0,]*7
+stats6b6=[0,]*7
+stats7b6=[0,]*7
+stats8b6=[0,]*7
+stats9b6=[0,]*7
+stats10b6=[0,]*7
+stats11b6=[0,]*7
+stats12b6=[0,]*7
+stats13b6=[0,]*7
+stats14b6=[0,]*7
+stats15b6=[0,]*7
+stats16b6=[0,]*7
+stats17b6=[0,]*7
+stats18b6=[0,]*7
+stats19b6=[0,]*7
+stats20b6=[0,]*7
+stats21b6=[0,]*7
+stats22b6=[0,]*7
+stats23b6=[0,]*7
+stats24b6=[0,]*7
+stats25b6=[0,]*7
+stats26b6=[0,]*7
+stats27b6=[0,]*7
+stats28b6=[0,]*7
+stats29b6=[0,]*7
+stats30b6=[0,]*7
+stats1b7=[0,]*7
+stats2b7=[0,]*7
+stats3b7=[0,]*7
+stats4b7=[0,]*7
+stats5b7=[0,]*7
+stats6b7=[0,]*7
+stats7b7=[0,]*7
+stats8b7=[0,]*7
+stats9b7=[0,]*7
+stats10b7=[0,]*7
+stats11b7=[0,]*7
+stats12b7=[0,]*7
+stats13b7=[0,]*7
+stats14b7=[0,]*7
+stats15b7=[0,]*7
+stats16b7=[0,]*7
+stats17b7=[0,]*7
+stats18b7=[0,]*7
+stats19b7=[0,]*7
+stats20b7=[0,]*7
+stats21b7=[0,]*7
+stats22b7=[0,]*7
+stats23b7=[0,]*7
+stats24b7=[0,]*7
+stats25b7=[0,]*7
+stats26b7=[0,]*7
+stats27b7=[0,]*7
+stats28b7=[0,]*7
+stats29b7=[0,]*7
+stats30b7=[0,]*7
+stats1b8=[0,]*7
+stats2b8=[0,]*7
+stats3b8=[0,]*7
+stats4b8=[0,]*7
+stats5b8=[0,]*7
+stats6b8=[0,]*7
+stats7b8=[0,]*7
+stats8b8=[0,]*7
+stats9b8=[0,]*7
+stats10b8=[0,]*7
+stats11b8=[0,]*7
+stats12b8=[0,]*7
+stats13b8=[0,]*7
+stats14b8=[0,]*7
+stats15b8=[0,]*7
+stats16b8=[0,]*7
+stats17b8=[0,]*7
+stats18b8=[0,]*7
+stats19b8=[0,]*7
+stats20b8=[0,]*7
+stats21b8=[0,]*7
+stats22b8=[0,]*7
+stats23b8=[0,]*7
+stats24b8=[0,]*7
+stats25b8=[0,]*7
+stats26b8=[0,]*7
+stats27b8=[0,]*7
+stats28b8=[0,]*7
+stats29b8=[0,]*7
+stats30b8=[0,]*7
+stats1b9=[0,]*7
+stats2b9=[0,]*7
+stats3b9=[0,]*7
+stats4b9=[0,]*7
+stats5b9=[0,]*7
+stats6b9=[0,]*7
+stats7b9=[0,]*7
+stats8b9=[0,]*7
+stats9b9=[0,]*7
+stats10b9=[0,]*7
+stats11b9=[0,]*7
+stats12b9=[0,]*7
+stats13b9=[0,]*7
+stats14b9=[0,]*7
+stats15b9=[0,]*7
+stats16b9=[0,]*7
+stats17b9=[0,]*7
+stats18b9=[0,]*7
+stats19b9=[0,]*7
+stats20b9=[0,]*7
+stats21b9=[0,]*7
+stats22b9=[0,]*7
+stats23b9=[0,]*7
+stats24b9=[0,]*7
+stats25b9=[0,]*7
+stats26b9=[0,]*7
+stats27b9=[0,]*7
+stats28b9=[0,]*7
+stats29b9=[0,]*7
+stats30b9=[0,]*7
+winCounter=winCounter1=winCounter2=winCounter3=winCounter4=winCounter5=winCounter6=winCounter7=winCounter8=winCounter9=winCounter10=winCounter11=winCounter12=winCounter13=winCounter14=winCounter15=0
+winCounter16=winCounter17=winCounter18=winCounter19=winCounter20=winCounter21=winCounter22=winCounter23=winCounter24=winCounter25=winCounter26=winCounter27=winCounter28=winCounter29=winCounter30=0
+team=' '
+
+def batterUpA():
+    if globals()['batterA']<9:
+        globals()['batterA']+=1
+    else:
+        globals()['batterA']=1 
+    batterA=globals()['batterA']
+    if batterA==1:
+        batterName=globals()['batterA1']
+    elif batterA==2:
+        batterName=globals()['batterA2']
+    elif batterA==3:
+        batterName=globals()['batterA3']
+    elif batterA==4:
+        batterName=globals()['batterA4']
+    elif batterA==5:
+        batterName=globals()['batterA5']
+    elif batterA==6:
+        batterName=globals()['batterA6']
+    elif batterA==7:
+        batterName=globals()['batterA7']
+    elif batterA==8:
+        batterName=globals()['batterA8']
+    else:
+        batterName=globals()['batterA9']
+    batterStats=globals()['batterStats']
+    batterStats[0]=batterName[1]
+    batterStats[1]=batterName[2]
+    batterStats[2]=batterName[3]
+    batterStats[3]=batterName[4]
+    batterStats[4]=batterName[5]
+    globals()['batterStats']=batterStats
+    
+def batterUpH():
+    if globals()['batterH']<9:
+        globals()['batterH']+=1
+    else:
+        globals()['batterH']=1
+    batterH=globals()['batterH']
+    if batterH==1:
+        batterName=globals()['batterH1']
+    elif batterH==2:
+        batterName=globals()['batterH2']
+    elif batterH==3:
+        batterName=globals()['batterH3']
+    elif batterH==4:
+        batterName=globals()['batterH4']
+    elif batterH==5:
+        batterName=globals()['batterH5']
+    elif batterH==6:
+        batterName=globals()['batterH6']
+    elif batterH==7:
+        batterName=globals()['batterH7']
+    elif batterH==8:
+        batterName=globals()['batterH8']
+    else:
+        batterName=globals()['batterH9']
+    batterStats=globals()['batterStats']
+    batterStats[0]=batterName[1]
+    batterStats[1]=batterName[2]
+    batterStats[2]=batterName[3]
+    batterStats[3]=batterName[4]
+    batterStats[4]=batterName[5]
+    globals()['batterStats']=batterStats
+
+def getStatsA():
+    stats=globals()['stats']
+    batterA=globals()['batterA']
+    if batterA==1:
+        stats=globals()['statsA1']
+    elif batterA==2:
+        stats=globals()['statsA2']
+    elif batterA==3:
+        stats=globals()['statsA3']
+    elif batterA==4:
+        stats=globals()['statsA4']
+    elif batterA==5:
+        stats=globals()['statsA5']
+    elif batterA==6:
+        stats=globals()['statsA6']
+    elif batterA==7:
+        stats=globals()['statsA7']
+    elif batterA==8:
+        stats=globals()['statsA8']
+    else:
+        stats=globals()['statsA9']
+    globals()['stats']=stats
+    
+def getStatsH():
+    stats=globals()['stats']
+    batterH=globals()['batterH']
+    if batterH==1:
+        stats=globals()['statsH1']
+    elif batterH==2:
+        stats=globals()['statsH2']
+    elif batterH==3:
+        stats=globals()['statsH3']
+    elif batterH==4:
+        stats=globals()['statsH4']
+    elif batterH==5:
+        stats=globals()['statsH5']
+    elif batterH==6:
+        stats=globals()['statsH6']
+    elif batterH==7:
+        stats=globals()['statsH7']
+    elif batterH==8:
+        stats=globals()['statsH8']
+    else:
+        stats=globals()['statsH9']
+    globals()['stats']=stats
+    
+def inputStatsA():
+    stats=globals()['stats']
+    batterA=globals()['batterA']
+    if batterA==1:
+        globals()['statsA1']=stats
+    elif batterA==2:
+        globals()['statsA2']=stats
+    elif batterA==3:
+        globals()['statsA3']=stats
+    elif batterA==4:
+        globals()['statsA4']=stats
+    elif batterA==5:
+        globals()['statsA5']=stats
+    elif batterA==6:
+        globals()['statsA6']=stats
+    elif batterA==7:
+        globals()['statsA7']=stats
+    elif batterA==8:
+        globals()['statsA8']=stats
+    else:
+        globals()['statsA9']=stats
+    stats=['HR','H','AB','BB','2B','3B','RBI']
+    globals()['stats']=stats
+    
+def inputStatsH():
+    stats=globals()['stats']
+    batterH=globals()['batterH']
+    if batterH==1:
+        globals()['statsH1']=stats
+    elif batterH==2:
+        globals()['statsH2']=stats
+    elif batterH==3:
+        globals()['statsH3']=stats
+    elif batterH==4:
+        globals()['statsH4']=stats
+    elif batterH==5:
+        globals()['statsH5']=stats
+    elif batterH==6:
+        globals()['statsH6']=stats
+    elif batterH==7:
+        globals()['statsH7']=stats
+    elif batterH==8:
+        globals()['statsH8']=stats
+    else:
+        globals()['statsH9']=stats
+    stats=['HR','H','AB','BB','2B','3B','RBI']
+    globals()['stats']=stats
+
+def walkFS():
+    runs=0
+    if globals()['b1']==0:
+        globals()['b1']=1
+    elif globals()['b2']==0:
+        globals()['b2']=globals()['b1']=1
+    elif globals()['b3']==0:
+        globals()['b3']=globals()['b2']=globals()['b1']=1
+    else:
+        runs+=1
+        globals()['b3']=globals()['b2']=globals()['b1']=1
+    globals()['runs']+=runs
+    globals()['rbiAtBat']+=runs
+
+def singleFS():
+    runs=0
+    if globals()['b3']==1:
+        globals()['b3']=0
+        runs+=1
+    if globals()['b2']==1:
+        globals()['b2']=0
+        globals()['b3']=1
+    if globals()['b1']==1:
+        globals()['b1']=0
+        globals()['b2']=1
+    globals()['b1']=1
+    globals()['hits']+=1
+    globals()['runs']+=runs
+    globals()['rbiAtBat']+=runs
+    
+def doubleFS():
+    runs=0
+    if globals()['b3']==1:
+        globals()['b3']=0
+        runs+=1
+    if globals()['b2']==1:
+        globals()['b2']=0
+        runs+=1
+    if globals()['b1']==1:
+        globals()['b1']=0
+        globals()['b3']=1
+    globals()['b2']=1
+    globals()['hits']+=1
+    globals()['runs']+=runs
+    globals()['rbiAtBat']+=runs
+    
+def tripleFS():
+    runs=0
+    if globals()['b3']==1:
+        globals()['b3']=0
+        runs+=1
+    if globals()['b2']==1:
+        globals()['b2']=0
+        runs+=1
+    if globals()['b1']==1:
+        globals()['b1']=0
+        runs+=1
+    globals()['b3']=1
+    globals()['hits']+=1
+    globals()['runs']+=runs
+    globals()['rbiAtBat']+=runs
+    
+def homeRunFS():
+    runs=0
+    if globals()['b3']==1:
+        globals()['b3']=0
+        runs+=1
+    if globals()['b2']==1:
+        globals()['b2']=0
+        runs+=1
+    if globals()['b1']==1:
+        globals()['b1']=0
+        runs+=1
+    runs+=1
+    globals()['hits']+=1
+    globals()['runs']+=runs
+    globals()['rbiAtBat']+=runs
+
+def atBatFS():
+    stats=globals()['stats']
+    batterStats=globals()['batterStats']
+    event=random.random()
+    if event<=batterStats[0]:
+        homeRunFS()
+        stats[0]+=1
+        stats[1]+=1
+    elif event<=batterStats[1]:
+        tripleFS()
+        stats[1]+=1
+        stats[5]+=1
+    elif event<=batterStats[2]:
+        doubleFS()
+        stats[1]+=1
+        stats[4]+=1
+    elif event<=batterStats[3]:
+        singleFS()
+        stats[1]+=1
+    elif event<=batterStats[4]:
+        walkFS()
+        stats[2]-=1
+        stats[3]+=1
+    else:
+        globals()['outs']+=1
+    stats[2]+=1
+    stats[6]+=globals()['rbiAtBat']
+    globals()['stats']=stats
+    globals()['rbiAtBat']=0
+
+def topInningFS():
+    globals()['b1']=globals()['b2']=globals()['b3']=globals()['outs']=0
+    while globals()['outs'] < 3:
+        batterUpA()
+        getStatsA()
+        atBatFS()
+        inputStatsA()
+        globals()['runsA']+=globals()['runs']
+        globals()['hitsA']+=globals()['hits']
+        globals()['runs']=globals()['hits']=0
+        
+def bottomInningFS():
+    globals()['b1']=globals()['b2']=globals()['b3']=globals()['outs']=0
+    while globals()['outs'] < 3:
+        if(inn>=9 and runsH>runsA):
+            break
+        batterUpH()
+        getStatsH()
+        atBatFS()
+        inputStatsH()
+        globals()['runsH']+=globals()['runs']
+        globals()['hitsH']+=globals()['hits']
+        globals()['runs']=globals()['hits']=0
+
+def getTeamFS(teamID):
+    startRetrieval=globals()['startRetrieval']
+    endRetrieval=globals()['endRetrieval']
+    if teamID==1:
+        startRetrieval=1
+        endRetrieval=6
+    elif teamID==2:
+        startRetrieval=7
+        endRetrieval=12
+    elif teamID==3:
+        startRetrieval=13
+        endRetrieval=18
+    elif teamID==4:
+        startRetrieval=19
+        endRetrieval=24
+    elif teamID==5:
+        startRetrieval=25
+        endRetrieval=30
+    elif teamID==6:
+        startRetrieval=31
+        endRetrieval=36
+    elif teamID==7:
+        startRetrieval=37
+        endRetrieval=42
+    elif teamID==8:
+        startRetrieval=43
+        endRetrieval=48
+    elif teamID==9:
+        startRetrieval=49
+        endRetrieval=54
+    elif teamID==10:
+        startRetrieval=55
+        endRetrieval=60
+    elif teamID==11:
+        startRetrieval=61
+        endRetrieval=66
+    elif teamID==12:
+        startRetrieval=67
+        endRetrieval=72
+    elif teamID==13:
+        startRetrieval=73
+        endRetrieval=78
+    elif teamID==14:
+        startRetrieval=79
+        endRetrieval=84
+    elif teamID==15:
+        startRetrieval=85
+        endRetrieval=90
+    elif teamID==16:
+        startRetrieval=91
+        endRetrieval=96
+    elif teamID==17:
+        startRetrieval=97
+        endRetrieval=102
+    elif teamID==18:
+        startRetrieval=103
+        endRetrieval=108
+    elif teamID==19:
+        startRetrieval=109
+        endRetrieval=114
+    elif teamID==20:
+        startRetrieval=115
+        endRetrieval=120
+    elif teamID==21:
+        startRetrieval=121
+        endRetrieval=126
+    elif teamID==22:
+        startRetrieval=127
+        endRetrieval=132
+    elif teamID==23:
+        startRetrieval=133
+        endRetrieval=138
+    elif teamID==24:
+        startRetrieval=139
+        endRetrieval=144
+    elif teamID==25:
+        startRetrieval=145
+        endRetrieval=150
+    elif teamID==26:
+        startRetrieval=151
+        endRetrieval=156
+    elif teamID==27:
+        startRetrieval=157
+        endRetrieval=162
+    elif teamID==28:
+        startRetrieval=163
+        endRetrieval=168
+    elif teamID==29:
+        startRetrieval=169
+        endRetrieval=174
+    elif teamID==30:
+        startRetrieval=175
+        endRetrieval=180
+    globals()['startRetrieval']=startRetrieval
+    globals()['endRetrieval']=endRetrieval
+    globals()['teamID']=teamID
+    
+def inputTeamFSH(teamID):
+    getTeamFS(teamID)
+    for i in range(1,10):
+        if i==1:
+            column='A'
+        elif i==2:
+            column='B'
+        elif i==3:
+            column='C'
+        elif i==4:
+            column='D'
+        elif i==5:
+            column='E'
+        elif i==6:
+            column='F'
+        elif i==7:
+            column='G'
+        elif i==8:
+            column='H'
+        else:
+            column='I'
+        
+        data_rows=[]
+        for row in globals()['ws'][column+str(globals()['startRetrieval']):column+str(globals()['endRetrieval'])]:
+            data_cols=[]
+            for cell in row:
+                data_cols.append(cell.value)
+                data_rows.append(data_cols)
+        rawData=str(data_rows).split()
+    
+        homeRunData=float(rawData[0].replace("["," ").replace("]"," ").replace(","," ").replace("'"," ").strip())
+        tripleData=float(rawData[1].replace("["," ").replace("]"," ").replace(","," ").replace("'"," ").strip())
+        doubleData=float(rawData[2].replace("["," ").replace("]"," ").replace(","," ").replace("'"," ").strip())
+        singleData=float(rawData[3].replace("["," ").replace("]"," ").replace(","," ").replace("'"," ").strip())
+        walkData=float(rawData[4].replace("["," ").replace("]"," ").replace(","," ").replace("'"," ").strip())
+        nameData=str(rawData[5].replace("["," ").replace("]"," ").replace(","," ").replace("'"," ").strip())
+    
+        if i==1:
+            globals()['batterH1']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        elif i==2:
+            globals()['batterH2']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        elif i==3:
+            globals()['batterH3']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        elif i==4:
+            globals()['batterH4']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        elif i==5:
+            globals()['batterH5']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        elif i==6:
+            globals()['batterH6']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        elif i==7:
+            globals()['batterH7']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        elif i==8:
+            globals()['batterH8']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        else:
+            globals()['batterH9']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+                
+def inputTeamFSA(teamID):
+    getTeamFS(teamID)
+    for i in range(1,10):
+        if i==1:
+            column='A'
+        elif i==2:
+            column='B'
+        elif i==3:
+            column='C'
+        elif i==4:
+            column='D'
+        elif i==5:
+            column='E'
+        elif i==6:
+            column='F'
+        elif i==7:
+            column='G'
+        elif i==8:
+            column='H'
+        else:
+            column='I'
+        
+        data_rows=[]
+        for row in globals()['ws'][column+str(globals()['startRetrieval']):column+str(globals()['endRetrieval'])]:
+            data_cols=[]
+            for cell in row:
+                data_cols.append(cell.value)
+                data_rows.append(data_cols)
+        rawData=str(data_rows).split()
+    
+        homeRunData=float(rawData[0].replace("["," ").replace("]"," ").replace(","," ").replace("'"," ").strip())
+        tripleData=float(rawData[1].replace("["," ").replace("]"," ").replace(","," ").replace("'"," ").strip())
+        doubleData=float(rawData[2].replace("["," ").replace("]"," ").replace(","," ").replace("'"," ").strip())
+        singleData=float(rawData[3].replace("["," ").replace("]"," ").replace(","," ").replace("'"," ").strip())
+        walkData=float(rawData[4].replace("["," ").replace("]"," ").replace(","," ").replace("'"," ").strip())
+        nameData=str(rawData[5].replace("["," ").replace("]"," ").replace(","," ").replace("'"," ").strip())
+    
+        if i==1:
+            globals()['batterA1']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        elif i==2:
+            globals()['batterA2']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        elif i==3:
+            globals()['batterA3']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        elif i==4:
+            globals()['batterA4']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        elif i==5:
+            globals()['batterA5']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        elif i==6:
+            globals()['batterA6']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        elif i==7:
+            globals()['batterA7']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        elif i==8:
+            globals()['batterA8']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+        else:
+            globals()['batterA9']=[nameData,homeRunData,tripleData,doubleData,singleData,walkData]
+
+def reportStatsFS(j):
+    if j==1:
+        outputSheet.write('A1','ARI')
+    elif j==2:
+        outputSheet.write('A11','ATL')
+    elif j==3:
+        outputSheet.write('A21','BAL')
+    elif j==4:
+        outputSheet.write('A31','BOS')
+    elif j==5:
+        outputSheet.write('A41','CHC')
+    elif j==6:
+        outputSheet.write('A51','CWS')
+    elif j==7:
+        outputSheet.write('A61','CIN')
+    elif j==8:
+        outputSheet.write('A71','CLE')
+    elif j==9:
+        outputSheet.write('A81','COL')
+    elif j==10:
+        outputSheet.write('A91','DET')
+    elif j==11:
+        outputSheet.write('A101','HOU')
+    elif j==12:
+        outputSheet.write('A111','KC')
+    elif j==13:
+        outputSheet.write('A121','LAA')
+    elif j==14:
+        outputSheet.write('A131','LAD')
+    elif j==15:
+        outputSheet.write('A141','MIA')
+    elif j==16:
+        outputSheet.write('A151','MIL')
+    elif j==17:
+        outputSheet.write('A161','MIN')
+    elif j==18:
+        outputSheet.write('A171','NYM')
+    elif j==19:
+        outputSheet.write('A181','NYY')
+    elif j==20:
+        outputSheet.write('A191','OAK')
+    elif j==21:
+        outputSheet.write('A201','PHI')
+    elif j==22:
+        outputSheet.write('A211','PIT')
+    elif j==23:
+        outputSheet.write('A221','SD')
+    elif j==24:
+        outputSheet.write('A231','SF')
+    elif j==25:
+        outputSheet.write('A241','SEA')
+    elif j==26:
+        outputSheet.write('A251','STL')
+    elif j==27:
+        outputSheet.write('A261','TB')
+    elif j==28:
+        outputSheet.write('A271','TEX')
+    elif j==29:
+        outputSheet.write('A281','TOR')
+    else:
+        outputSheet.write('A291','WAS')
+    rows=[str(j*10-9),str(j*10-8),str(j*10-7),str(j*10-6),str(j*10-5),str(j*10-4),str(j*10-3),str(j*10-2),str(j*10-1)]
+    for i in range(1,10):
+        if i==1:
+            column='B'
+            batter=batterH1
+        elif i==2:
+            column='C'
+            batter=batterH2
+        elif i==3:
+            column='D'
+            batter=batterH3
+        elif i==4:
+            column='E'
+            batter=batterH4
+        elif i==5:
+            column='F'
+            batter=batterH5
+        elif i==6:
+            column='G'
+            batter=batterH6
+        elif i==7:
+            column='H'
+            batter=batterH7
+        elif i==8:
+            column='I'
+            batter=batterH8
+        else:
+            column='J'
+            batter=batterH9
+        stats=globals()['stats'+str(j)+'b'+str(i)]
+        outputSheet.write(column+rows[0],batter[0])
+        outputSheet.write(column+rows[1],round(int(stats[1])/(1+int(stats[2])),3)) #Fix the 1+ adjustment
+        outputSheet.write(column+rows[2],stats[0])
+        outputSheet.write(column+rows[3],stats[6])
+        outputSheet.write(column+rows[4],round((int(stats[1])+int(stats[3]))/(1+int(stats[2])+int(stats[3])),3)) #Fix the 1+ adjustment
+        outputSheet.write(column+rows[5],stats[4])
+        outputSheet.write(column+rows[6],stats[5])
+        outputSheet.write(column+rows[7],stats[3])
+        outputSheet.write(column+rows[8],int(stats[2])+int(stats[3]))
+        
+def standings():
+    BAL='BAL: '+str(globals()['winCounter3'])+'-'+str((162-globals()['winCounter3']))
+    BOS='BOS: '+str(globals()['winCounter4'])+'-'+str((162-globals()['winCounter4']))
+    NYY='NYY: '+str(globals()['winCounter19'])+'-'+str((162-globals()['winCounter19']))
+    TB='TB:  '+str(globals()['winCounter27'])+'-'+str((162-globals()['winCounter27']))
+    TOR='TOR: '+str(globals()['winCounter29'])+'-'+str((162-globals()['winCounter29']))
+    CLE='CLE: '+str(globals()['winCounter8'])+'-'+str((162-globals()['winCounter8']))
+    CWS='CWS: '+str(globals()['winCounter6'])+'-'+str((162-globals()['winCounter6']))
+    DET='DET: '+str(globals()['winCounter10'])+'-'+str((162-globals()['winCounter10']))
+    KC='KC:  '+str(globals()['winCounter12'])+'-'+str((162-globals()['winCounter12']))
+    MIN='MIN: '+str(globals()['winCounter17'])+'-'+str((162-globals()['winCounter17']))
+    HOU='HOU: '+str(globals()['winCounter11'])+'-'+str((162-globals()['winCounter11']))
+    LAA='LAA: '+str(globals()['winCounter13'])+'-'+str((162-globals()['winCounter13']))
+    OAK='OAK: '+str(globals()['winCounter20'])+'-'+str((162-globals()['winCounter20']))
+    SEA='SEA: '+str(globals()['winCounter25'])+'-'+str((162-globals()['winCounter25']))
+    TEX='TEX: '+str(globals()['winCounter28'])+'-'+str((162-globals()['winCounter28']))
+    ATL='ATL: '+str(globals()['winCounter2'])+'-'+str((162-globals()['winCounter2']))
+    MIA='MIA: '+str(globals()['winCounter15'])+'-'+str((162-globals()['winCounter15']))
+    NYM='NYM: '+str(globals()['winCounter18'])+'-'+str((162-globals()['winCounter18']))
+    PHI='PHI: '+str(globals()['winCounter21'])+'-'+str((162-globals()['winCounter21']))
+    WAS='WAS: '+str(globals()['winCounter30'])+'-'+str((162-globals()['winCounter30']))
+    CHC='CHC: '+str(globals()['winCounter5'])+'-'+str((162-globals()['winCounter5']))
+    CIN='CIN: '+str(globals()['winCounter7'])+'-'+str((162-globals()['winCounter7']))
+    MIL='MIL: '+str(globals()['winCounter16'])+'-'+str((162-globals()['winCounter16']))
+    PIT='PIT: '+str(globals()['winCounter22'])+'-'+str((162-globals()['winCounter22']))
+    STL='STL: '+str(globals()['winCounter26'])+'-'+str((162-globals()['winCounter26']))
+    ARI='ARI: '+str(globals()['winCounter1'])+'-'+str((162-globals()['winCounter1']))
+    COL='COL: '+str(globals()['winCounter9'])+'-'+str((162-globals()['winCounter9']))
+    LAD='LAD: '+str(globals()['winCounter14'])+'-'+str((162-globals()['winCounter14']))
+    SD='SD:  '+str(globals()['winCounter23'])+'-'+str((162-globals()['winCounter23']))
+    SF='SF:  '+str(globals()['winCounter24'])+'-'+str((162-globals()['winCounter24']))
+    print(BAL)
+    print(BOS)
+    print(NYY)
+    print(TB)
+    print(TOR)
+    print()
+    print(CLE)
+    print(CWS)
+    print(DET)
+    print(KC)
+    print(MIN)
+    print()
+    print(HOU)
+    print(LAA)
+    print(OAK)
+    print(SEA)
+    print(TEX)
+    print()
+    print(ATL)
+    print(MIA)
+    print(NYM)
+    print(PHI)
+    print(WAS)
+    print()
+    print(CHC)
+    print(CIN)
+    print(MIL)
+    print(PIT)
+    print(STL)
+    print()
+    print(ARI)
+    print(COL)
+    print(LAD)
+    print(SD)
+    print(SF)
+
+def gameResetFS(i):
+    globals()['b1']=globals()['b2']=globals()['b3']=globals()['runs']=globals()['hits']=globals()['runsA']=globals()['hitsA']=globals()['runsH']=globals()['hitsH']=globals()['outs']=globals()['batterA']=globals()['batterH']=0
+    globals()['inn']=1
+    globals()['batterStats']=['HR','3B','2B','1B','BB']
+    globals()['stats']=['HR','H','AB','BB','2B','3B']
+    for j in range(1,10):
+        s=globals()['stats'+str(i)+'b'+str(j)]
+        p=globals()['statsA'+str(j)]
+        for q in range(0,7):
+            s[q]+=p[q]
+        globals()['stats'+str(i)+'b'+str(j)]=s
+        globals()['statsA'+str(j)]=[0,]*7
+    
+def teamResetFS(i):
+    for j in range(1,10):
+        s=globals()['stats'+str(i)+'b'+str(j)]
+        p=globals()['statsH'+str(j)]
+        for q in range(0,7):
+            s[q]+=p[q]
+        globals()['stats'+str(i)+'b'+str(j)]=s
+        globals()['statsH'+str(j)]=[0,]*7
+
+def gameFS(i):
+    while globals()['inn']<=9 or globals()['runsA']==globals()['runsH']:
+        topInningFS()
+        if not(globals()['inn']==9 and globals()['runsH']>globals()['runsA']):
+            bottomInningFS()
+        globals()['inn']+=1
+    if runsH>runsA:
+        globals()['winCounter']+=1
+    else:
+        globals()['winCounter'+str(i)]+=1
+    gameResetFS(i)
+
+def fullSeason():
+    for i in range(1,31):
+        teamResetFS(i)
+        inputTeamFSH(i)
+        if i==1:
+            col='C'
+        elif i==2:
+            col='F'
+        elif i==3:
+            col='I'
+        elif i==4:
+            col='L'
+        elif i==5:
+            col='O'
+        elif i==6:
+            col='R'
+        elif i==7:
+            col='U'
+        elif i==8:
+            col='X'
+        elif i==9:
+            col='AA'
+        elif i==10:
+            col='AD'
+        elif i==11:
+            col='AG'
+        elif i==12:
+            col='AJ'
+        elif i==13:
+            col='AM'
+        elif i==14:
+            col='AP'
+        elif i==15:
+            col='AS'
+        elif i==16:
+            col='AV'
+        elif i==17:
+            col='AY'
+        elif i==18:
+            col='BB'
+        elif i==19:
+            col='BE'
+        elif i==20:
+            col='BH'
+        elif i==21:
+            col='BK'
+        elif i==22:
+            col='BN'
+        elif i==23:
+            col='BQ'
+        elif i==24:
+            col='BT'
+        elif i==25:
+            col='BW'
+        elif i==26:
+            col='BZ'
+        elif i==27:
+            col='CC'
+        elif i==28:
+            col='CF'
+        elif i==29:
+            col='CI'
+        else:
+            col='CL'
+        for j in range(2,188):
+            if globals()['ws2'][col+str(j)].value in range(1,31):
+                inputTeamFSA(globals()['ws2'][col+str(j)].value)
+                gameFS(globals()['ws2'][col+str(j)].value)
+        teamResetFS(i)
+        reportStatsFS(i)
+        globals()['winCounter'+str(i)]+=globals()['winCounter']
+        globals()['winCounter']=0
+    standings()
+
+fullSeason()
+outputWorkbook.close()
